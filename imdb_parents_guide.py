@@ -51,23 +51,18 @@ def main(movie=''):
         try:
             movie_name_and_year = ' '.join(soup.find_all('div', class_='title_wrapper')[0].find_all('h1')[0].text.split('\xa0'))
         except IndexError:
-            open_page = input(f"Looks like not much information about the movie was found!\nEnter '1' to google '{movie}' or '2' to search again: ")
+            open_page = input(f"Looks like not much information about the movie was found!"
+                              f"\nEnter 1 to google '{movie}' or type another movie to search: ")
 
-            # input validation
-            if open_page in ['1', '2']:
-                if open_page == '1':
-                    webbrowser.open(f'https://www.google.com/search?q={"+".join(movie.split(" "))}+movie')
-                elif open_page == '2':
-                    movie = input('Enter a movie name or \'q\' to quit: ')
-                    main(movie)
-            else:
-                while open_page not in ['1', '2']:
-                    open_page = input("Type in either '1' or '2': ")
-                    if open_page == '1':
-                        webbrowser.open(f'https://www.google.com/search?q={"+".join(movie.split(" "))}+movie')
-                    elif open_page == '2':
-                        movie = input('Enter a movie name or \'q\' to quit: ')
-                        main(movie)
+            if int(open_page) == 1:
+                webbrowser.open(f'https://www.google.com/search?q={"+".join(movie.split(" "))}+movie')
+                ##### SPACER #####
+                for i in range(30):
+                    print()
+                movie = input('Enter a movie name or \'q\' to quit: ')
+                continue
+            movie = open_page
+            continue
         try:
             metacritic_score = soup.find_all('div', class_='metacriticScore')[0].text.strip()
         except IndexError:
@@ -103,17 +98,17 @@ def main(movie=''):
 
         # in case not much information found the option to open movie's page in your web browser is prompted
         if metacritic_score == 'N/A' and nudity == 'N/A':
-            open_page = input("\nUh-oh! Looks like not much information about the movie was found!\nEnter '1' to google the movie or '2' to search again: ")
-
-            # input validation
-            if open_page in ['1', '2']:
-                if open_page == '1':
-                    webbrowser.open(f'https://www.google.com/search?q={"+".join(movie.split(" "))}+movie')
-            else:
-                while open_page not in ['1', '2']:
-                    open_page = input("Type in either '1' or '2': ")
-                    if open_page == '1':
-                        webbrowser.open(f'https://www.google.com/search?q={"+".join(movie.split(" "))}+movie')
+            open_page = input("\nUh-oh! Looks like not much information about the movie was found!"
+                              f"\nEnter 1 to google the movie or type another movie to search: ")
+            if open_page == '1':
+                webbrowser.open(f'https://www.google.com/search?q={"+".join(movie.split(" "))}+movie')
+                ##### SPACER #####
+                for i in range(30):
+                    print()
+                movie = input('Enter a movie name or \'q\' to quit: ')
+                continue
+            movie = open_page
+            continue
 
         movie = input("\nEnter another movie name or 'q' to quit: ")
 
