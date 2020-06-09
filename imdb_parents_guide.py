@@ -17,7 +17,7 @@ def main(movie=''):
         if len(sys.argv) > 1:  # either from command line argument
             movie = ' '.join(sys.argv[1:])
         else:  # or via text input
-            movie = input('Enter a movie name: ')
+            movie = input('Enter a movie name or \'q\' to quit: ')
 
     ##### MAIN LOOP #####
     while movie != 'q':
@@ -29,7 +29,20 @@ def main(movie=''):
         ##### IMDB SEARCH PAGE INFO #####
         site = requests.get(imdb + f'find?q={"+".join(movie.split(" "))}&ref_=nv_sr_sm')
         soup = BeautifulSoup(site.text, 'lxml')
-        movie_page = soup.find_all('td', class_='result_text')[0].find_all('a')[0].get('href')
+        try:
+            movie_page = soup.find_all('td', class_='result_text')[0].find_all('a')[0].get('href')
+        except IndexError:
+            print(f"Uh-oh! No such movie called '{movie}' was found!\n")
+            g = input(f"Enter 1 to google '{movie}' or type another movie to search: ")
+            if int(g) == 1:
+                webbrowser.open(f'https://www.google.com/search?q={"+".join(movie.split(" "))}+movie')
+                ##### SPACER #####
+                for i in range(30):
+                    print()
+                movie = input('Enter a movie name or \'q\' to quit: ')
+                continue
+            movie = g
+            continue
         movie_page_ref_code = movie_page.split('/')[2]  # get the movie's reference code from the search results
 
         ##### MOVIE PAGE INFO #####
@@ -38,14 +51,14 @@ def main(movie=''):
         try:
             movie_name_and_year = ' '.join(soup.find_all('div', class_='title_wrapper')[0].find_all('h1')[0].text.split('\xa0'))
         except IndexError:
-            open_page = input(
-                f"Looks like not much information about the movie was found!\nEnter '1' to google '{movie}' or '2' to search again: ")
+            open_page = input(f"Looks like not much information about the movie was found!\nEnter '1' to google '{movie}' or '2' to search again: ")
 
+            # input validation
             if open_page in ['1', '2']:
                 if open_page == '1':
                     webbrowser.open(f'https://www.google.com/search?q={"+".join(movie.split(" "))}+movie')
                 elif open_page == '2':
-                    movie = input('Enter a movie name: ')
+                    movie = input('Enter a movie name or \'q\' to quit: ')
                     main(movie)
             else:
                 while open_page not in ['1', '2']:
@@ -53,7 +66,7 @@ def main(movie=''):
                     if open_page == '1':
                         webbrowser.open(f'https://www.google.com/search?q={"+".join(movie.split(" "))}+movie')
                     elif open_page == '2':
-                        movie = input('Enter a movie name: ')
+                        movie = input('Enter a movie name or \'q\' to quit: ')
                         main(movie)
         try:
             metacritic_score = soup.find_all('div', class_='metacriticScore')[0].text.strip()
@@ -88,10 +101,11 @@ def main(movie=''):
                       soup.find_all('section', {'id': 'advisory-nudity'})[0].find_all('li')[i].text.strip().split('\n')[
                           0])
 
-        # in case not much information found the movie's page is opened in your web browser
+        # in case not much information found the option to open movie's page in your web browser is prompted
         if metacritic_score == 'N/A' and nudity == 'N/A':
             open_page = input("\nUh-oh! Looks like not much information about the movie was found!\nEnter '1' to google the movie or '2' to search again: ")
 
+            # input validation
             if open_page in ['1', '2']:
                 if open_page == '1':
                     webbrowser.open(f'https://www.google.com/search?q={"+".join(movie.split(" "))}+movie')
@@ -107,6 +121,7 @@ def main(movie=''):
     for i in range(30):
         print()
     print('Bye bye!')
+    sys.exit()
 
 
 main()
