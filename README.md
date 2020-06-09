@@ -2,7 +2,7 @@
 A python web scraping script that takes in a movie name as input and outputs the metascore and the parents guide information (only the sex &amp; nudity description) for that movie. 
 
  # How the script works
- This script uses the BeautifulSoup and the requests module to scrape the IMDB website for the information. The script first gets the movie's reference code from the IMDB search page and uses that to find the movie's main page and the parents guide page. As the script only considers the first result from the search page, **it is recommended that you type in the movie name as accurately you can**.
+ This script uses the beautifulsoup4 and the requests module to scrape the IMDB website for the information. The script first gets the movie's reference code from the IMDB search page and uses that to find the movie's main page and the parents guide page. As the script only considers the first result from the search page, **it is recommended that you type in the movie name as accurately you can**.
  
  # Installation
 ```
