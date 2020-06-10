@@ -2,9 +2,8 @@
 A python web scraping script that takes in a movie name as input and outputs various information about the movie.
 
 # Features include:
-- Finds the full movie name through the IMBd search results and metascore.
 - Show tomatometer rating, audience scores and critics census from rottentomatoes.com
-- Shows movie summary taken from IMDb.
+- Shows metascore and movie summary taken from IMDb.
 - Shows sex & nudity information from the movie's parents guide page.
 - Offers to google the movie name for you, in case not much information is found.
 
