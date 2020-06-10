@@ -26,6 +26,20 @@ def main(movie=''):
         for i in range(30):
             print()
 
+        ##### ROTTEN TOMATOES INFO #####
+        rotten_site = requests.get(f'https://www.rottentomatoes.com/m/{"_".join(movie.split(" "))}')
+        rotten_soup = BeautifulSoup(rotten_site.text, 'lxml')
+        try:
+            rotten_rating = rotten_soup.find_all('span', class_='mop-ratings-wrap__percentage')[0].text.strip()
+        except IndexError:
+            rotten_rating = 'N/A'
+        try:
+            rotten_crtitcs_census = \
+            rotten_soup.find_all('p', class_='mop-ratings-wrap__text mop-ratings-wrap__text--concensus')[
+                0].text.strip()
+        except IndexError:
+            rotten_crtitcs_census = 'N/A'
+
         ##### IMDB SEARCH PAGE INFO #####
         site = requests.get(imdb + f'find?q={"+".join(movie.split(" "))}&ref_=nv_sr_sm')
         soup = BeautifulSoup(site.text, 'lxml')
@@ -34,7 +48,7 @@ def main(movie=''):
         except IndexError:
             print(f"Uh-oh! No such movie called '{movie}' was found!\n")
             g = input(f"Enter 1 to google '{movie}' or type another movie to search: ")
-            if int(g) == 1:
+            if g == '1':
                 webbrowser.open(f'https://www.google.com/search?q={"+".join(movie.split(" "))}+movie')
                 ##### SPACER #####
                 for i in range(30):
@@ -67,8 +81,17 @@ def main(movie=''):
             metacritic_score = soup.find_all('div', class_='metacriticScore')[0].text.strip()
         except IndexError:
             metacritic_score = "N/A"
-        print("Movie: ", movie_name_and_year)
-        print("Metascore: ", metacritic_score)
+
+        try:
+            movie_summary = soup.find_all('div', class_='summary_text')[0].text.strip()
+        except IndexError:
+            movie_summary = 'N/A'
+
+        print("MOVIE:", movie_name_and_year)
+        print("METASCORE:", metacritic_score)
+        print("ROTTEN TOMATOES:", rotten_rating)
+        print("CRITICS CENSUS:", rotten_crtitcs_census)
+        print(f"IMDb SUMMARY: {movie_summary}")
 
         ##### PARENTS GUIDE PAGE INFO #####
         parents_guide_page = f'https://www.imdb.com/title/{movie_page_ref_code}/parentalguide?ref_=tt_stry_pg'
@@ -83,9 +106,9 @@ def main(movie=''):
             nudity = "N/A"
         else:
             nudity = nudity_level
-        print("Nudity level:", nudity)
+        print("NUDITY LEVEL:", nudity)
 
-        print("Description:")
+        print("NUDITY DESCRIPTION:")
         # if no sex & nudity descriptions found
         if len(soup.find_all('section', {'id': 'advisory-nudity'})[0].find_all('li')) == 1:
             print("No description found.")
