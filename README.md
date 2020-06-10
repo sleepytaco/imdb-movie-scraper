@@ -16,11 +16,11 @@ pip install requests
 
 # Screenshots
 ### Initial input
-![screenshot 1](script_screenshots/imdb_sc1.png?raw=true)
+![screenshot 1](script_sc1.png?raw=true)
 ### General search result
-![screenshot 2](script_screenshots/imdb_sc2.png?raw=true)
+![screenshot 2](script_sc2.png?raw=true)
 ### Search result in case not enough information is found
-![screenshot 3](script_screenshots/imdb_sc3.png?raw=true)
+![screenshot 3](script_sc3.png?raw=true)
 
 
 
