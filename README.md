@@ -1,7 +1,7 @@
   # IMDb Movie Information Scraper
 A python web scraping script that takes in a movie name as input and outputs various information about the movie.
 
-### Features include:
+# Features include:
 - Finds the full movie name through the IMBd search results and metascore.
 - Show tomatometer rating, audience scores and critics census from rottentomatoes.com
 - Shows movie summary taken from IMDb.
