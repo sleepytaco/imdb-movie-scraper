@@ -8,7 +8,12 @@ pip install requests
 ```
 
 # Screenshots
-
+### Initial Input
+![screenshot 1](script_screenshots/imdb_sc1.png?raw=true)
+### General Search Result Screen
+![screenshot 2](script_screenshots/imdb_sc2.png?raw=true)
+### Search Result Screen in case not enough information is found
+![screenshot 3](script_screenshots/imdb_sc3.png?raw=true)
 
 
 
