@@ -54,7 +54,7 @@ def main(movie=''):
             open_page = input(f"Looks like not much information about the movie was found!"
                               f"\nEnter 1 to google '{movie}' or type another movie to search: ")
 
-            if int(open_page) == 1:
+            if open_page == '1':
                 webbrowser.open(f'https://www.google.com/search?q={"+".join(movie.split(" "))}+movie')
                 ##### SPACER #####
                 for i in range(30):
