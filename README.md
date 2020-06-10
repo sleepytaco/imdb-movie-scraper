@@ -7,6 +7,11 @@ pip install beautifulsoup4
 pip install requests
 ```
 
+# Screenshots
+
+
+
+
  # How the script works
  This script uses the beautifulsoup4 and the requests module to scrape the IMDB website for the information. The script first gets the movie's reference code from the IMDB search page and uses that to find the movie's main page and the parents guide page. As the script only considers the first result from the search page, **it is recommended that you type in the movie name as accurately you can**.
  
