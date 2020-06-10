@@ -2,9 +2,9 @@
 A python web scraping script that takes in a movie name as input and outputs the metascore and the parents guide information (only the sex &amp; nudity description) for that movie. If not much information about the movie was found, the script offers to google the movie in your web browser.
 
 ### Other features include:
-- Shows rotten tomatoes ratings and critics census
-- Shows movie summary taken from IMDb
-- Offers to google the movie name for you, in case not much information was found.
+- Shows rotten tomatoes ratings and critics census.
+- Shows movie summary taken from IMDb.
+- Offers to google the movie name for you, in case not much information is found.
 
  # Installation
 ```
