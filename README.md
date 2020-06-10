@@ -1,9 +1,11 @@
-  # IMDB Parents Guide Information Scraper
-A python web scraping script that takes in a movie name as input and outputs the metascore and the parents guide information (only the sex &amp; nudity description) for that movie. If not much information about the movie was found, the script offers to google the movie in your web browser.
+  # IMDb Movie Information Scraper
+A python web scraping script that takes in a movie name as input and outputs various information about the movie.
 
-### Other features include:
-- Shows rotten tomatoe's tomatoemeter rating and critics census.
+### Features include:
+- Shows the movie name and metascore
+- Show tomatometer rating, audience scores and critics census from rottentomatoes.com
 - Shows movie summary taken from IMDb.
+- Shows sex & nudity information from the movie's parents guide information 
 - Offers to google the movie name for you, in case not much information is found.
 
  # Installation
