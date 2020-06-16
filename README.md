@@ -10,6 +10,7 @@ A python web scraping script that takes in a movie name as input and outputs var
  # Installation
 ```
 pip install beautifulsoup4
+pip install lxml
 pip install requests
 ```
 
