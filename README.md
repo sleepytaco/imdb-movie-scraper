@@ -22,6 +22,11 @@ pip install requests
 ### Search result in case not enough information is found
 ![screenshot 3](script_sc3.png?raw=true)
 
+# Walkthrough
+
+<img src='walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 
  # How the script works
