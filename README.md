@@ -14,14 +14,6 @@ pip install lxml
 pip install requests
 ```
 
-# Screenshots
-### Initial input
-![screenshot 1](script_sc1.png?raw=true)
-### General search result
-![screenshot 2](script_sc2.png?raw=true)
-### Search result in case not enough information is found
-![screenshot 3](script_sc3.png?raw=true)
-
 # Walkthrough
 
 <img src='walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
